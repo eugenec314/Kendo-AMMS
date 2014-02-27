@@ -1,0 +1,93 @@
+﻿<div>
+    <ul data-role="listview" data-style="inset">
+        <li>
+            <label>
+                Work Order</label>
+            <wovalue id="wonumb"></wovalue>
+        </li>
+        <li>
+            <label>
+                Equipment Number</label>
+            <wovalue id="eqnumb"></wovalue>
+        </li>
+        <li>
+            <label>
+                Equipment Name</label>
+            <wovalue id="eqname"></wovalue>
+        </li>
+        <li>
+            <label>
+                Remark</label>
+            <wovalue id="remark"></wovalue>
+        </li>
+        <li>
+            <label>
+                Date Required</label>
+            <wovalue id="daterequired"></wovalue>
+        </li>
+        <li><a class="expandButtonParts" href="#WO_View"  >Parts</a>
+            <div class="expandable" id="Part">
+                <ul>
+                    <li>
+                        <label>
+                            Part Name</label>
+                        <wovalue id="partname">This Part</wovalue>
+                    </li>
+                    <li>
+                        <label>
+                            Part Number</label>
+                        <wovalue id="partnumb">AAA-123</wovalue>
+                    </li>
+                    <li>
+                        <label>
+                            Quantity</label>
+                        <wovalue id="quantity">1</wovalue>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li><a class="expandButtonLabor" href="#WO_View"  >Labor</a>
+            <div class="expandable" id = "Worker">
+                <ul>
+                    <li>
+                        <label>
+                            Name</label>
+                        <wovalue id="thename">George Reeves</wovalue>
+                    </li>
+                    <li>
+                        <label>
+                            Job</label>
+                        <wovalue id="thejob">Super</wovalue>
+                    </li>
+                    <li>
+                        <label>
+                            Hours</label>
+                        <wovalue id="thetime">1.5</wovalue>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li><a class="expandButtonResult" href="#WO_View"  >Result</a>
+            <div class="expandable" id="Remark">
+                <ul>
+                    <li>
+                        <label>
+                            Remarks</label>
+                        <wovalue id="partname">This job has been completed.</wovalue>
+                    </li>
+                 </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+<script>
+    $('.expandButtonParts').click(function () {
+        $('#Part').slideToggle('slow');
+    });
+    $('.expandButtonResult').click(function () {
+        $('#Remark').slideToggle('slow');
+    });
+    $('.expandButtonLabor').click(function () {
+        $('#Worker').slideToggle('slow');
+    });
+</script>

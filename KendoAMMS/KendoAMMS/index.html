@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
+    <script src="kendo/js/jquery.min.js"></script>  
+    <script src="cordova.js"></script>
+    <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="scripts/Data.js"></script>
+    <script src="scripts/woView.js"></script>
+    <script src="scripts/woList.js"></script>
+
+<script>
+    $(window).load(function () {
+        var WO = getParameterByName("wo");
+        if (WO.length > 0) {
+            var record = app.getWorkOrder(WO);
+            app.ShowRecord(record);
+        }
+    });
+</script>
+</head>
+<body>
+
+	<!--Work Order template-->
+	<script type="text/x-kendo-tmpl" id="wo-template">
+        # for (var i = 0; i < data.length; i++) { #
+		    <li>
+			    <a class="position-left" data-role="button" ontouchend="app.InitView(app.getWorkOrder('#=data[i].WONUMB#'))">
+				    <span class="wo-number">#=data[i].WONUMB#  </span>
+				    <span class="wo-info">#=data[i].EQNAME#  </span>
+				    <span class="position-right wo-info">#=data[i].REMARK#  </span>
+			    </a>
+		    </li>
+        # } #
+	</script>
+
+    <!-- Open Work Order List -->
+    <div data-role="view" id="drawer-openWO" data-layout="drawer-layout" data-title="AMMS Phablet">
+		<div class="WO">
+			<p class="wo-title">Open Work Orders</p>
+
+			<div class="separator">
+ 			</div>
+
+			<ul class="woList"	data-role="listview" id="OpenWOList">
+            <script>                
+                app.showOpenWorkOrders();
+            </script>
+               
+			</ul>
+		</div>    
+    </div>
+    <!-- Closed Work Order List -->
+    <div data-role="view" id="drawer-closedWO" data-layout="drawer-layout" data-title="AMMS Phablet">
+		<div class="WO">
+			<p class="wo-title">Closed Work Orders</p>
+
+			<div class="separator">
+  			</div>
+
+			<ul class="woList"	data-role="listview" id="ClosedWOList">
+            <script>
+                app.showClosedWorkOrders();
+            </script>
+               
+			</ul>
+		</div>    
+
+    </div>
+    <div data-role="view" id="WO_View" data-title="AMMS Phablet" data-layout="drawer-layout"></div>
+    <!-- Drawers -->
+   <div data-role="drawer" id="my-drawer" style="width: 270px" data-position="left"
+        data-swipe-to-open="true" data-views='["drawer-openWO","WO_View","drawer-closedWO","drawer-scan"]'>
+        <ul data-role="listview" data-type="group">
+            <li>Work Orders
+                <ul>
+                    <li data-icon="bookmarks"><a href="#drawer-openWO" data-transition="none">Open Work
+                        Orders</a></li>
+                    <li data-icon="history"><a href="#drawer-closedWO" data-transition="none">Closed Work
+                        Orders</a></li>
+                    <li data-icon="compose"><a href="#drawer-closedWO" data-transition="none">New Work Order</a></li>
+                </ul>
+            </li>
+            <li>Inventory
+                <ul>
+                    <li data-icon="action">Part Activity</li>
+                    <li data-icon="add">PO Receiving</li>
+                </ul>
+            </li>
+             <li>Equipment
+                <ul>
+                    <li>Meter Readings</li>
+                    <li>Statistical PdM</li>
+                    <li>History</li>
+                </ul>
+            </li>
+       </ul>
+    </div>
+    <!--Layout-->
+    <div data-role="layout" data-id="drawer-layout">
+        <!--Header-->
+        <div data-role="header">
+            <div data-role="navbar">
+                <a data-role="button" data-rel="drawer" href="#my-drawer" data-icon="play" data-align="left">
+                    Menu 
+                </a>
+               <span data-role="view-title"></span> 
+                 <a data-icon="camera" data-align="right" data-role="button" id="scanButton" data-click="app.readBarcode">
+                   Scan
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    $(function () {
+        $("#WO_View").load("WOView.html");
+    });
+</script>   
+</html>
+

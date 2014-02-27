@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
+    <script src="cordova.js"></script>
+    <script src="kendo/js/jquery.min.js"></script>
+    <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="scripts/Data.js"></script>
+    <script src="scripts/woView.js"></script>
+    <script src="scripts/woList.js"></script>
+
+</head>
+<body>
+    <div data-role="view" id="WO_Open" data-title="AMMS Phablet" data-layout="header-layout" data-init="app.InitOpen" >
+        <ul data-role="listview" data-style="inset">
+            <li> 
+                <label>Work Order</label>
+                <input type="text" id="wonumb" ></input>
+            </li>
+            <li> 
+                <label>Equipment Number</label>
+                <input type="text" id="eqnumb" ></input>
+            </li>
+            <li> 
+                <label>Equipment Name</label>
+                <input type="text" id="eqname" ></input>
+            </li>
+            <li> 
+                <label>Remark</label>
+                <input type="text" id="remark" ></input>
+            </li>
+            <li> 
+                <label>Date Required</label>
+                <input type="date" id="daterequired" ></input>
+            </li>
+            <li>
+                <div data-role="collapsible">
+                    <h4>Parts</h4>
+                       <label>
+                            Part Name</label>
+                        <wovalue id="partname">This Part</wovalue>
+                        <label>
+                            Part Number</label>
+                        <wovalue id="partnumb">AAA-123</wovalue>
+                         <label>
+                            Quantity</label>
+                        <wovalue id="quantity">1</wovalue>
+                </div>             
+            </li>
+        </ul>
+    </div>
+    <!--Layout-->
+    <div data-role="layout" data-id="header-layout" >
+        <!--Header-->
+        <div data-role="footer">
+            <div data-role="navbar">
+                <a data-role="button" data-rel="drawer" data-click="app.GoBack" data-icon="history" data-align="left">
+                    Back 
+                </a>
+               <span data-role="view-title"></span> 
+                 <a data-icon="camera" data-align="right" data-role="button" id="scanButton" data-click="app.readBarcode">
+                   Scan
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

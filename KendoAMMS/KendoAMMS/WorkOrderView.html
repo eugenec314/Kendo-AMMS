@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="styles/jquery.mobile-1.3.1.min.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
+    <script src="cordova.js"></script>
+    <script src="kendo/js/jquery.min.js"></script>
+
+<!-- <script src="kendo/js/jquery.mobile-1.3.1.min.js"></script>-->
+    <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="kendo/js/jquery.mobile-1.3.1.min.js"></script>
+     <script src="scripts/Data.js"></script>
+    <script src="scripts/woView.js"></script>
+    <script src="scripts/woList.js"></script>
+</head>
+<body>
+
+ <div data-role="view" id="WO_View" data-title="AMMS Phablet" data-layout="header-layout" data-init="app.InitView" >
+           <div data-role="collapsible">
+                    <h4>Heading</h4>
+    <p>I'm the collapsible content. By default I'm closed, bu t you can click the header to open me.</p>
+    </div>
+    <div>
+            <ul data-role="listview" data-style="inset">
+            <li>
+                <label>
+                    Work Order</label>
+                <wovalue id="wonumb"></wovalue>
+            </li>
+            <li>
+                <label>
+                    Equipment Number</label>
+                <wovalue id="eqnumb"></wovalue>
+            </li>
+            <li>
+                <label>
+                    Equipment Name</label>
+                <wovalue id="eqname"></wovalue>
+            </li>
+            <li>
+                <label>
+                    Remark</label>
+                <wovalue id="remark"></wovalue>
+            </li>
+            <li>
+                <label>
+                    Date Required</label>
+                <wovalue id="daterequired"></wovalue>
+            </li>
+ 
+                           <label>
+                                Part Name</label>
+                            <wovalue id="partname">This Part</wovalue>
+                            <label>
+                                Part Number</label>
+                            <wovalue id="partnumb">AAA-123</wovalue>
+                             <label>
+                                Quantity</label>
+                            <wovalue id="quantity">1</wovalue>
+               
+
+        </ul>
+    </div>
+    <!--Layout-->
+    <div data-role="layout" data-id="header-layout">
+        <!--Header-->
+        <div data-role="footer">
+            <div data-role="navbar">
+                <a data-role="button" data-rel="drawer" data-click="app.GoBack" data-icon="history"
+                    data-align="left">Back </a><span data-role="view-title"></span><a data-icon="camera"
+                        data-align="right" data-role="button" id="scanButton" data-click="app.readBarcode">
+                        Scan </a>
+            </div>
+        </div>
+    </div>
+    $(window).load(function () {
+        alert("loaded");
+    });
+    </body>
+</html>
